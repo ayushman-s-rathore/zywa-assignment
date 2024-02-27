@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Get Card Status</title>
+    <link rel="stylesheet" href="../styles/styles.css" />
+  </head>
+  <body>
+    <div class="form-flex">
+
+      <h1 class="form-title">Get Card Status</h1>
+
+      <!-- input section -->
+      <form action="/api/get_card_status" method="GET" class="form-main">
+        <label for="input" class="form-label"
+          >Enter Phone Number or Card ID:</label
+        >
+        <input
+          type="text"
+          id="input"
+          name="input"
+          placeholder="534534534 or ZYW8827"
+          class="form-input"
+          required
+        />
+        <button type="submit" class="button">Get Status</button>
+      </form>
+
+      <!-- output section -->
+      <div class="output-flex">
+        <% if (status) { %>
+          <% if (status === "NOT_FOUND") { %>
+            <div class="output">
+              <div class="output-result">Sorry, We could not find your card. Please check your CardID</div>
+            </div>
+          <% } else { %>
+            <div class="output">
+              <div class="output-title">Status:</div>
+              <div class="output-result"><%= status %></div>
+            </div>
+            <% if (comment) { %>
+              <div class="output">
+                <div class="output-title">Comment:</div>
+                <div class="output-result"><%= comment %></div>
+              </div>
+            <% } %>
+          <% } %>
+        <% } %>
+      </div>
+      
+    </div>
+  </body>
+</html>
